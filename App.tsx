@@ -64,50 +64,53 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFAFA] selection:bg-black selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#09090b] selection:bg-orange-500 selection:text-white">
       <Header />
 
-      {/* Decorative Background Elements */}
+      {/* Decorative Background Elements - Dark Mode */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-purple-100/40 to-blue-50/40 blur-[120px]" />
-        <div className="absolute top-[10%] right-[0%] w-[50%] h-[50%] rounded-full bg-gradient-to-bl from-emerald-50/60 to-yellow-50/40 blur-[100px]" />
+        {/* Subtle orange glow top left */}
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-orange-500/10 blur-[120px]" />
+        {/* Subtle blue glow bottom right */}
+        <div className="absolute top-[20%] right-[0%] w-[40%] h-[60%] rounded-full bg-blue-600/10 blur-[100px]" />
       </div>
 
       <main className="relative z-10 flex-1 w-full max-w-6xl mx-auto px-6 pt-32 pb-12">
         
         {/* Hero Section */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100/80 border border-gray-200 mb-6 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-xs font-medium text-gray-600">Potenciado por Google Gemini</span>
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+            <span className="text-xs font-medium text-zinc-400">Potenciado por Google Gemini</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6 leading-[1.1]">
+          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8 leading-[1.1]">
             Encuentra tu próximo <br className="hidden md:block" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
-              parque de calistenia
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+              Street Workout
             </span>
           </h2>
           
-          <p className="text-lg text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
-            Explora los mejores spots para entrenar al aire libre en España. 
-            Usa nuestra IA para localizar barras y equipamiento cerca de ti.
+          <p className="text-lg text-zinc-400 mb-12 max-w-xl mx-auto leading-relaxed">
+            Explora los mejores spots para entrenar al aire libre. 
+            IA avanzada para localizar barras y equipamiento cerca de ti.
           </p>
 
-          {/* Search Bar Component */}
+          {/* Search Bar Component - Dark Style */}
           <form onSubmit={handleSearch} className="relative max-w-2xl mx-auto group">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-100 to-blue-100 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+            {/* Glow effect behind search */}
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            <div className="relative flex items-center bg-white p-2 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 transition-shadow duration-300 focus-within:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+            <div className="relative flex items-center bg-[#18181b] p-2 rounded-2xl border border-white/10 transition-all duration-300 focus-within:border-white/20 focus-within:bg-[#202024]">
               
-              <div className="pl-4 text-gray-400">
+              <div className="pl-4 text-zinc-500">
                 <Search className="w-5 h-5" />
               </div>
               
               <input
                 type="text"
-                className="flex-1 w-full px-4 py-3 bg-transparent border-none outline-none text-gray-900 placeholder-gray-400 text-base"
-                placeholder="¿Dónde quieres entrenar? (ej: Madrid Río)"
+                className="flex-1 w-full px-4 py-3 bg-transparent border-none outline-none text-white placeholder-zinc-500 text-base"
+                placeholder="¿Dónde quieres entrenar? (ej: Valencia)"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -116,7 +119,7 @@ const App: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleLocationSearch}
-                  className="p-2.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
+                  className="p-2.5 text-zinc-400 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
                   title="Usar mi ubicación"
                 >
                   <MapPin className="w-5 h-5" />
@@ -125,7 +128,7 @@ const App: React.FC = () => {
                 <button
                   type="submit"
                   disabled={status === AppStatus.LOADING}
-                  className="flex items-center gap-2 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-gray-200 active:scale-95"
+                  className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-zinc-200 text-black rounded-xl font-bold transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-white/5 active:scale-95"
                 >
                   {status === AppStatus.LOADING ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -144,7 +147,7 @@ const App: React.FC = () => {
         {/* Error State */}
         {status === AppStatus.ERROR && errorMsg && (
           <div className="max-w-md mx-auto mb-12 animate-in fade-in zoom-in-95 duration-300">
-             <div className="bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-xl flex items-center gap-3 text-sm">
+             <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl flex items-center gap-3 text-sm">
                <AlertCircle className="w-5 h-5 shrink-0" />
                {errorMsg}
              </div>
@@ -160,12 +163,12 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200/60 mt-auto backdrop-blur-sm bg-white/40">
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <footer className="border-t border-white/5 mt-auto bg-[#09090b]">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
           <p>© {new Date().getFullYear()} Calistenia Locator.</p>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-black transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-black transition-colors">Términos</a>
+            <a href="#" className="hover:text-white transition-colors">Privacidad</a>
+            <a href="#" className="hover:text-white transition-colors">Términos</a>
           </div>
         </div>
       </footer>

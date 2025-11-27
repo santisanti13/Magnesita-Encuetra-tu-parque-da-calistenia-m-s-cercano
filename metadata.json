@@ -1,0 +1,7 @@
+{
+  "name": "Calistenia España Locator",
+  "description": "Encuentra parques de calistenia y street workout en España utilizando IA para buscar ubicaciones reales y generar rutinas personalizadas.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
